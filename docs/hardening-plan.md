@@ -37,21 +37,22 @@ This file tracks the stabilisation work before new SaaS features land.
 - [x] Expand frontend error handling to reuse `resolveAuthError` for password reset failures and future contexts.
 
 ### Phase 6 - Social Platform Connectivity *(in progress)*
-- [ ] Finalise domain contracts for `PlatformPublisher`, `PlatformCredentialRepository`, and `PlatformPublisherRegistry`; document wiring rules in `docs/architecture.md`.
-- [ ] Add Flyway migrations for platform credentials (encrypted columns, audit trails) and OAuth state tracking.
-- [ ] Build infrastructure adapters for Meta/Instagram first (OAuth, publishing, analytics pull) behind the shared interfaces; add feature-flagged controllers/services.
-- [ ] Expose `/home/publishing` UI to list connected platforms and surface “Connect Instagram/TikTok/YouTube” flows; persist connection status via new APIs.
-- [ ] Establish Kafka topics for `platform.publish.request` / `platform.publish.result` and add worker skeleton that can fan out publish commands per provider.
+- [x] Finalise domain contracts for `PlatformPublisher`, credential stores, and registry wiring (`docs/architecture.md` updated).
+- [x] Ship Flyway migration for platform connections/tokens + AES-GCM encryption service.
+- [x] Implement TikTok OAuth + REST client + `/api/platforms/tiktok/*` endpoints (reusable DTOs).
+- [ ] Build Meta/Instagram adapter (OAuth + publish scaffolding) followed by YouTube.
+- [ ] Add left-rail in-app navigation, `/home/publishing` UI, provider cards, and OAuth callback pages; surface `/privacy` and `/terms` for partner reviews.
+- [ ] Establish Kafka topics for `platform.publish.{request,result}` and add worker skeleton so adapters can enqueue publishes.
 
 **Recommended execution order**
-1. Schema + encryption groundwork (Flyway + property-based encryption wiring).
-2. Domain/application contracts + Spring configuration (registry, credential services).
-3. Provider integrations slice-by-slice:
-   - TikTok OAuth + connections (done), reuse same controllers + DTOs.
-   - Meta/Instagram OAuth (reuse shared DTOs, swap properties), then YouTube.
-   - Add provider-specific `PlatformPublisher` implementations that publish to Kafka worker topics.
-4. Frontend `/home/publishing` connection UI wired to the generic `/api/platforms/*` endpoints.
-5. Kafka topics + worker skeleton for publish commands, then extend adapters for analytics ingestion.
+1. ✅ Backend foundation (schema + encryption + shared contracts).
+2. ✅ First provider slice (TikTok OAuth + connection APIs).
+3. **Current**: Minimal deployable UX
+   - Drawer-based app shell for logged-in users.
+   - Publishing screen with provider cards, connection list, and CTA hooks.
+   - Static `/privacy` + `/terms` pages + documentation of staging URLs.
+4. Add Meta/Instagram + YouTube adapters and extend UI buttons once review credentials are ready.
+5. Stand up Kafka worker + analytics ingestion to fan out publish/sync jobs.
 
 ### Phase 7 - Publishing Orchestrator & Scheduling
 - [ ] Implement `PublishingJobScheduler` and delivery receipt models; persist scheduled posts, retries, and audit events.

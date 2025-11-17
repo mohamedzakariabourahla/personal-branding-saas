@@ -37,10 +37,11 @@ This file tracks the stabilisation work before new SaaS features land.
 - [x] Expand frontend error handling to reuse `resolveAuthError` for password reset failures and future contexts.
 
 ### Phase 6 - Social Platform Connectivity *(in progress)*
+- Before wiring additional providers, make sure you’ve completed the checklist in [`docs/meta-connector-setup.md`](meta-connector-setup.md); it captures the required Meta/TikTok Business Manager steps, tester roles, and redirect URIs used by the shared OAuth flows.
 - [x] Finalise domain contracts for `PlatformPublisher`, credential stores, and registry wiring (`docs/architecture.md` updated).
 - [x] Ship Flyway migration for platform connections/tokens + AES-GCM encryption service.
 - [x] Implement TikTok OAuth + REST client + `/api/platforms/tiktok/*` endpoints (reusable DTOs).
-- [ ] Build Meta/Instagram adapter (OAuth + publish scaffolding) followed by YouTube.
+- [x] Build Meta/Instagram adapter (OAuth + publish scaffolding) and extend the shared flow to cover YouTube (PKCE + multi-channel selection, documented in [`docs/meta-connector-setup.md`](meta-connector-setup.md) and [`docs/youtube-connector-setup.md`](youtube-connector-setup.md)).
 - [ ] Add left-rail in-app navigation, `/home/publishing` UI, provider cards, and OAuth callback pages; surface `/privacy` and `/terms` for partner reviews.
 - [ ] Establish Kafka topics for `platform.publish.{request,result}` and add worker skeleton so adapters can enqueue publishes.
 

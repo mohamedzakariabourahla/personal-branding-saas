@@ -23,8 +23,8 @@ Every secret or endpoint must be provided via environment variables. Use this fi
 | `SECURITY_JWT_ISSUER` | Issuer claim for tokens | ⛔ (defaults to `personal-branding-saas`) | `upersona-prod` |
 | `APP_ENCRYPTION_KEY` | 32-byte AES-GCM key for encrypting platform tokens | ✅ | `0123456789abcdef0123456789abcdef` |
 | `APP_ENCRYPTION_KEY_ID` | Identifier for the encryption key | ✅ | `prod-key` |
-| `MAIL_HOST` / `MAIL_PORT` / `MAIL_USERNAME` / `MAIL_PASSWORD` | SMTP settings for transactional emails | ✅ for environments that send mail | `smtp.mailtrap.io` etc. |
-| `MAIL_FROM` | From address used in notification emails | ✅ | `no-reply@upersona.app` |
+| `MAIL_PROVIDER_API_KEY` / `MAIL_PROVIDER_BASE_URL` | Credentials for the HTTP email provider (defaults to Resend’s `https://api.resend.com`) | ✅ | `re_xxx` |
+| `MAIL_FROM` | From address used in notification emails (must be verified with your provider) | ✅ | `no-reply@upersona.app` |
 | `APP_MAIL_RESET_BASE_URL` / `APP_MAIL_VERIFY_BASE_URL` | Front-end URLs embedded in auth emails | ✅ | `https://app.upersona.app/reset-password?token=` |
 
 ### OAuth providers

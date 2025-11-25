@@ -19,6 +19,7 @@ jobs:
           distribution: temurin
           java-version: '21'
           cache: maven
+          cache-dependency-path: personal-branding-saas-api/pom.xml
       - name: Run Maven tests
         working-directory: personal-branding-saas-api
         run: mvn -B test

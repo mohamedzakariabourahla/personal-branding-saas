@@ -10,10 +10,10 @@ Paste this at the start of a new chat to restore context. Include pointers to ot
 - **Docs**: mention if you're referencing `environment.md` (env/setup), `phases-and-tasks.md` (roadmap/checklist), `connectors.md` (provider setup), `security.md` (session/CSP/encryption), `product-overview.md` (product context).
 
 Example:
-Goal: let's refine the frontend, we focus on making it strictly adaptive and responsive with best practice and clean architecture / we also work on user experiance and make this product/saas simple to use for users.
+Goal: let's refine the the code, read and review both frontend and backend and make it strictly respecting clean architecture and solid principles and ready for scalability and each part of code should be in it is place.
 Stack: Spring Boot + Next.js; Redis/Postgres.
 State: schedule publishing integrated andtested with instagram, TikTok sandbox DNS blocked; YouTube untested, the rest platforms not integrated yet.
 Env/URLs: https://pb.local (mkcert+proxy), API localhost:8443 (mkcert+proxy).
 Recent: schedule posts integrated and tested with instagram.
-Next: review and read all the frontend and give me advices in the clean architecture implimentation, user expenriance enhancment, adaptevness and responsivness enhancment.
+Next: review and read all the frontend and give me advices in the clean architecture implementation, scalabilty, respecting each layer of codes as example (the services should be in hooks not in components or the records/models should be in models not in components).
 Docs: see environment.md (envs/setup), phases-and-tasks.md (roadmap), connectors.md (Meta/TikTok/YouTube), security.md (sessions/CSP/encryption), product-overview.md (product).

@@ -1,0 +1,8 @@
+. {
+  hosts {
+    192.168.100.3 pb.test api.pb.test
+    fallthrough
+  }
+  forward . 1.1.1.1 8.8.8.8
+  log
+}

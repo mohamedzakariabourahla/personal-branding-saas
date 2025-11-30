@@ -12,6 +12,7 @@ Focus areas:
 - Access tokens can remain short-lived in memory; optional second cookie if SSR is added later.
 - Device-scoped refresh tokens supported; list/revoke via `/api/auth/sessions`.
 - Endpoints: `/auth/login` issues cookies; `/auth/refresh` reads cookies when body is absent; logout clears cookie.
+- Tests: add regression coverage for cookie-only auth/refresh/logout paths (API + Playwright).
 
 ## CORS / CSP / Frame Ancestors
 - Configure `APP_CORS_ALLOWED_ORIGINS` per environment.

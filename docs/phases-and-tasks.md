@@ -7,6 +7,7 @@ Clean architecture and scalability drive every slice (API, frontend, future work
 - [ ] TikTok: blocked by sandbox DNS; resume when reachable or with post-review prod creds.
 - [ ] YouTube: untested (no developer account yet).
 - [x] Auth/onboarding/email verification; mail via Resend HTTP; Redis rate limiting; Postgres via Flyway; AES-GCM for platform tokens.
+- [x] Auth + publishing refactored to feature-first (domain/application/infrastructure/presentation) with shared user DTOs; repository adapter/unit tests added.
 - [x] Secrets moved to envs; prod vs local profiles explicit; mail/Redis handling hardened.
 - [x] Auth cookies: refresh tokens now cookie-only; access tokens stay in-memory on the client.
 - [x] Publishing scheduler backbone (Postgres persistence + Redis delayed queue; worker stub feature-flagged).
@@ -16,6 +17,7 @@ Clean architecture and scalability drive every slice (API, frontend, future work
 - [x] Config split; auth/verification tests in CI.
 - [x] Frontend auth UX fixes and Playwright smoke tests.
 - [x] Device-scoped refresh tokens; Redis-backed login/refresh/email throttling; email normalization.
+- [x] Feature-first migration for auth/publishing; mapper + repository adapter tests; WebMvc slices hardened.
 
 ## In Progress / Next
 ### Phase 5 - Auth & Session Hardening
@@ -23,6 +25,7 @@ Clean architecture and scalability drive every slice (API, frontend, future work
 - [x] Re-verify `/auth/refresh` cookie-only path and clear any stored refresh tokens on logout.
 - [ ] Add regression coverage for cookie-only auth (API + Playwright smoke).
 - [ ] Surface email dispatch failures to users (frontend) when provider rejects mail.
+- [ ] Optional: split remaining AuthService internals if MFA/SSO/roles expand.
 
 ### Phase 6 - Social Platform Connectivity
 - [ ] Resume TikTok once DNS/creds are available.
@@ -31,7 +34,7 @@ Clean architecture and scalability drive every slice (API, frontend, future work
 - [ ] Define Kafka topics/worker skeleton for publish requests/results.
 
 ### Phase 7 - Publishing Orchestrator & Scheduling
-- [ ] Wire queue consumer to PlatformPublisherRegistry; record attempts/retries/dead-letter; expose job list endpoints/UI (jobs API with attempts + retry added; worker resolves connection/auth, calls publishers, records attempts/metrics; needs media handling + provider responses).
+- [ ] Wire queue consumer to PlatformPublisherRegistry; record attempts/retries/dead-letter; expose job list endpoints/UI (jobs API with attempts + retry added; worker resolves connection/auth, calls publishers, records attempts/metrics; needs media handling + provider responses); add publishing repo adapter tests.
 - [ ] Calendar/queue UI reflecting scheduled + delivered posts.
 - [ ] Asset primitives (uploads) and validation.
 
